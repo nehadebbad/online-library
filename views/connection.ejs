@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Online-Library</title>
+    <link href="/assets/stylesheets/styles.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <% include ./partials/header.ejs %>
+    <% include ./partials/navigation.ejs %>
+
+    <main>
+      <section>
+        <form id="RSVP" method="POST" action="#" >
+          <table class="marginLeft80">
+          <tr>
+            <td>Register?<br><input type="hidden" name="viewConnections" value="<%= connection.connectionId %>"></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="round" onclick="document.getElementById('RSVP').setAttribute('action','/savedConnections?action=<%= (action===undefined || action==='')?'save':'updateProfile' %>&connection=<%= JSON.stringify(connection) %>&rsvp=Yes&viewConnections=<%= connection.connectionId %>');document.getElementById('RSVP').submit();">Yes
+
+              </button>
+            </td>
+            <td><button class="round" onclick="document.getElementById('RSVP').setAttribute('action','/savedConnections?action=<%= (action===undefined || action==='')?'save':'updateProfile' %>&connection=<%= JSON.stringify(connection) %>&rsvp=No&viewConnections=<%= connection.connectionId %>');document.getElementById('RSVP').submit();">No
+              </button>
+            </td>
+          </tr>
+          </table>
+        </form>
+
+        <h3><%=connection.connectionTopic %></h3>
+          <p>
+            <%=connection.connectionName %>
+          </p>
+          <p class="marginTop27">North Carolina Online Library<br>United States<br><%= connection.connectionTime.substr(0,connection.connectionTime.indexOf("|")) %>
+              <br><%= connection.connectionTime.substr(connection.connectionTime.indexOf("|")+1, connection.connectionTime.length) %>
+          </p>
+
+      </section>
+
+      <section>
+       <h3>Details</h3>
+       <p>
+         <%= connection.connectionDetails %>
+       </p>
+     </section>
+    </main>
+
+    <% include partials/footer.ejs %>
+
+    <script>
+
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+
+    </script>
+
+  </body>
+
+  </html>

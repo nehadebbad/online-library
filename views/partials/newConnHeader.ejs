@@ -1,0 +1,25 @@
+    <nav>
+      <div class="conn-nav">
+        <a href="#">
+          <form id="newConnection" action="/newConnection" method="post">
+            <div class="border" onclick="document.getElementById('newConnection').submit();">
+              Start a new Connection
+            </div>
+          </form>
+        </a>
+        <a href="#">
+          <form id="logout" action="/logout?action=logout" method="post">
+            <div class="border" onclick="document.getElementById('logout').submit();">
+              Log Out
+            </div>
+          </form>
+        </a>
+        <a href="#">
+          <form id="myConnections" action="/savedConnections" method="post">
+            <div class="border" onclick="document.getElementById('myConnections').submit();">
+              My Connections
+            </div>
+          </form>
+        </a>
+      </div>
+    </nav>

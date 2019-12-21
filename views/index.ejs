@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Online-Library</title>
+    <link href="/assets/stylesheets/styles.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+    <% include partials/header.ejs %>
+    <% include partials/navigation.ejs %>
+
+    <main>
+      <section>
+          <h2>Introduction</h2>
+          <p>An online library is an online database of digital resources. The resources include books,
+              photographs, word processor files, posts etc. In addition to storing content, these online resources provide
+              scope for organizing, searching and retrieving information maintained in the collection.
+              They are either maintained by individuals or organizations. The digital content may be stored locally, or accessed remotely via computer networks. These information retrieval systems are able to exchange information with each other through interoperability and sustainability.
+              The advantages of digital library area
+              No physical boundary. The user of a digital library need not to go to the library physically; people from all over the world can gain access to the same information, as long as an Internet connection is available.
+              Round the clock availability A major advantage of digital libraries is that people can gain access 24/7 to the information.
+              Multiple access. The same resources can be used simultaneously by a number of institutions and patrons. This may not be the case for copyrighted material: a library may have a license for "lending out" only one copy at a time; this is achieved with a system of digital rights management where a resource can become inaccessible after expiration of the lending period or after the lender chooses to make it inaccessible (equivalent to returning the resource).
+              Information retrieval. The user is able to use any search term (word, phrase, title, name, subject) to search the entire collection. Digital libraries can provide very user-friendly interfaces, giving click able access to its resources.
+              Preservation and conservation. Digitization is not a long-term preservation solution for physical collections, but does succeed in providing access copies for materials that would otherwise fall to degradation from repeated use. Digitized collections and born-digital objects pose many preservation and conservation concerns that analog materials do not. Please see the following "Problems" section of this page for examples.
+              Space. Whereas traditional libraries are limited by storage space, digital libraries have the potential to store much more information, simply because digital information requires very little physical space to contain them and media storage technologies are more affordable than ever before.
+              Added value. Certain characteristics of objects, primarily the quality of images, may be improved. Digitization can enhance legibility and remove visible flaws such as stains and discoloration.[21]
+              Easily accessible.
+          </p>
+      </section>
+
+    </main>
+
+    <% include partials/footer.ejs %>
+
+    <script>
+
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+
+    </script>
+
+  </body>
+
+  </html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Online-Library</title>
+    <link href="/assets/stylesheets/styles.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <% include ./partials/header.ejs %>
+    <% include ./partials/navigation.ejs %>
+    <main>
+      <section>
+          <table style="margin-top:20px">
+              <form class="" method="POST" action="/register">
+                <div class="container">
+                  <label for="firstname"><b>Firstname:</b></label>
+                  <input type="text" class="" name="firstName" id="firstName" placeholder="First Name" required>
+
+                  <label for="lastname">Lastname:</label>
+                  <input type="text" class="" name="lastName" id="inputLastName" placeholder="Last Name" required>
+
+                  <label for="email">Email:</label><br>
+                  <input type="email" class="" name="email" id="inputEmail" placeholder="Email" required><br>
+
+                  <label for="password">Password:</label>
+                  <input type="password" class="" name="password" id="inputPassword" placeholder="Password" required>
+
+                  <label for="confirmpassword">Confirm Password:</label>
+                  <input type="password" class="" name="confirmPassword" id="inputConfirmPassword" placeholder="Confirm Password" required>
+
+                  <% if(data.errorMessage!=undefined && data.errorMessage.length>0) {
+                      for (let index = 0; index < data.errorMessage.length; index++) {
+                          var element = JSON.stringify(data.errorMessage[index].msg);
+                          element = element.substr(1,element.length-2) %>
+                      <h6><%=element%></h6>
+                  <% }} %>
+
+                  <button type="submit" class="btnCreate">Register</button>
+                </div>
+              </form>
+
+            </table>
+
+      </section>
+    </main>
+
+  <% include partials/footer.ejs %>
+
+    <script>
+
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+
+    </script>
+
+  </body>
+  </html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Online-Library</title>
+    <link href="/assets/stylesheets/styles.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <% include ./partials/header.ejs %>
+    <% include ./partials/navigation.ejs %>
+    <main>
+      <section>
+        <h3>Saved Connections</h3>
+        <form id="saveConnection" action="#" method="post">
+          <table>
+            <caption style="float:left;">Books status</caption>
+            <tr>
+              <th>Connection</th>
+              <th>Category</th>
+              <th>Register?</th>
+              <th>Action</th>
+              <th>Action</th>
+            </tr>
+            <% if(savedConnection.length>0){%>
+          <% for(var i = 0;i<savedConnection.length;i++){%>
+          <tr>
+            <td><%=savedConnection[i].connectionName %><input type="hidden" name="viewConnections"
+                value="<%=savedConnection[i].connectionId %>">
+            </td>
+            <td><%=savedConnection[i].connectionTopic %> </td>
+            <td><%=savedConnection[i].rsvp %> </td>
+            <td>
+              <a class="button"
+                onclick="document.getElementById('saveConnection').setAttribute('action','/connection?action=update&connectionId=<%=savedConnection[i].connectionId%>');document.getElementById('saveConnection').submit();">
+                Update</a>
+            </td>
+            <td>
+              <a class="button"
+                onclick="document.getElementById('saveConnection').setAttribute('action','/savedConnections?action=dersvp&connection=<%= JSON.stringify(savedConnection[i]) %>');document.getElementById('saveConnection').submit();">
+                Remove RSVP</a>
+            </td>
+          </tr>
+          <% } %>
+          <% } else{ %>
+          <tr>
+            <td colspan="5">
+              No connections added yet
+            </td>
+          </tr>
+          <% } %>
+          </table>
+        </form>
+
+      </section>
+    </main>
+
+  <% include partials/footer.ejs %>
+
+    <script>
+
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+
+    </script>
+
+  </body>
+  </html>

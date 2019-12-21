@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Online-Library</title>
+    <link href="/assets/stylesheets/styles.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <% include partials/newConnheader.ejs %>
+    <% include partials/navigation.ejs %>
+
+    <main>
+      <section>
+        <table style="margin-top:20px">
+            <form class="btn btn-create" action="/updateConnection" method="post">
+              <div class="container">
+                <label for="firstname"><b>Topic:</b></label>
+                <input type="text" name="topic" class="newConn-text" placeholder="Topic" value="<%=connection.connectionTopic %>">
+
+                <label for="lastname">Name:</label>
+                <input type="text" name="name" class="newConn-text" placeholder="Name" value="<%=connection.connectionName %>">
+
+                <label for="email">Details:</label><br>
+                <textarea rows="4" cols="50" name="details" class="newConn-text"  placeholder="Description"><%=connection.connectionDetails %></textarea><br>
+
+                <label for="confirmpassword">When:</label>
+                <input type="date" name="date" class="newConn-text" value="<%=connection.connectionTime %>">
+
+                <input type="hidden" name="connectionId" value="<%=connection.connectionId %>">
+
+                <% if(data.errorMessage!=undefined && data.errorMessage.length>0) {
+                            for (let index = 0; index < data.errorMessage.length; index++) {
+                                var element = JSON.stringify(data.errorMessage[index].msg);
+                                element = element.substr(1,element.length-2) %>
+                            <h3><%=element%></h3>
+                        <% }} %>
+
+                <button type="submit" class="btnCreate">Submit Changes</button>
+              </div>
+            </form>
+
+          </table>
+
+      </section>
+    </main>
+
+    <% include partials/footer.ejs %>
+    <script>
+      function placeholderIsSupported() {
+      test = document.createElement('input');
+      return ('placeholder' in test);
+      }
+
+      $(document).ready(function(){
+      placeholderSupport = placeholderIsSupported() ? 'placeholder' : 'no-placeholder';
+      $('html').addClass(placeholderSupport);
+      });
+    </script>
+  </body>
+</html>

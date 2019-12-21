@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Online-Library</title>
+    <link href="/assets/stylesheets/styles.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <% include ./partials/newConnheader.ejs %>
+    <% include ./partials/navigation.ejs %>
+
+    <main>
+      <section>
+        <h2>Digital Library Login</h2>
+        <table style="margin-top:20px">
+            <form class="" action="/login" method="post">
+              <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" name="username" value="" placeholder="Email Address" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" name="password" value="" placeholder="Password" required>
+                <% if(data.errorMessage!=undefined) { %>
+                  <h6><%=data.errorMessage%></h6>
+                   <% } %>
+
+                <input type="submit" class="btnCreate" name="" value="Log In">
+              </div>
+            </form>
+
+          </table>
+      </section>
+    </main>
+
+    <% include ./partials/footer.ejs %>
+  </body>
+</html>

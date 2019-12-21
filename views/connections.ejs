@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Online-Library</title>
+    <link href="/assets/stylesheets/styles.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <% include ./partials/header.ejs %>
+    <% include ./partials/navigation.ejs %>
+
+    <main>
+      <section>
+        <div class='line'>
+          <h2>Choose from the books:</h2>
+          <form id="saveConnection" action="#" method="post"></form>
+          <ul>
+            <% for(var i =0; i<categories.length;i++) {%>
+              <li>
+                <p><%= categories[i] %></p>
+                  <ul>
+                    <% connections.forEach(function(item){ %>
+                        <% if(item.connectionTopic === categories[i]) {%>
+                            <li><a href="/connection?connectionId=<%=item.connectionId %>"><%= item.connectionName %></a>
+                              <% if (owner[i]  == 1) { %><br>
+                                <% console.log("owner") %>
+                                <a class="button"
+                onclick="document.getElementById('saveConnection').setAttribute('action','/savedConnections?action=delete&connection=<%= JSON.stringify(item) %>');document.getElementById('saveConnection').submit();">
+                Delete</a>
+
+                <a href="/updateConnection?connectionId=<%=item.connectionId %>">Edit</a>
+                              <% }  %></li>
+
+                        <% } %>
+                    <% }); %>
+                  </ul>
+              </li>
+            <% } %>
+          </ul>
+		    </div>
+      </section>
+
+    </main>
+    <% include partials/footer.ejs %>
+
+    <script>
+
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+
+    </script>
+
+  </body>
+
+  </html>
